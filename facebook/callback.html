@@ -15,6 +15,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header Section -->
         <div class="headerstt">
             <div class="all-channels">
                 <div class="channels-iconc"></div>
@@ -52,6 +53,7 @@
             </div>
         </div>
 
+        <!-- Content Section -->
         <div class="content">
             <div class="containerAC">
                 <h1>Connect A Social Profile</h1>
@@ -83,20 +85,58 @@
     <script>
         // Facebook SDK Initialization
         window.fbAsyncInit = function() {
-            FB.init({
-                appId: '860262239631451', 
-                cookie: true,
-                xfbml: true,
-                version: 'v20.0'
-            });
+            if (typeof FB !== 'undefined') {
+                FB.init({
+                    appId: '860262239631451', 
+                    cookie: true,
+                    xfbml: true,
+                    version: 'v20.0'
+                });
+            } else {
+                console.error('Facebook SDK not loaded!');
+            }
         };
-
+        var fields = [  "email",
+                        "manage_fundraisers",
+                        "read_insights",
+                        "publish_video",
+                        "catalog_management",
+                        "pages_manage_cta",
+                        "pages_manage_instant_articles",
+                        "pages_show_list",
+                        "read_page_mailboxes",
+                        "ads_management",
+                        "ads_read",
+                        "business_management",
+                        "pages_messaging",
+                        "pages_messaging_subscriptions",
+                        "instagram_basic",
+                        "instagram_manage_comments",
+                        "instagram_manage_insights",
+                        "instagram_content_publish",
+                        "leads_retrieval",
+                        "whatsapp_business_management",
+                        "instagram_manage_messages",
+                        "page_events",
+                        "pages_read_engagement",
+                        "pages_manage_metadata",
+                        "pages_read_user_content",
+                        "pages_manage_ads",
+                        "pages_manage_posts",
+                        "pages_manage_engagement",
+                        "whatsapp_business_messaging",
+                        "instagram_branded_content_brand",
+                        "instagram_branded_content_creator",
+                        "instagram_branded_content_ads_brand",
+                        "instagram_manage_events",
+                        "manage_app_solution"];
+        
         // Function to handle Facebook login
         function loginWithFacebook() {
             FB.login(function(response) {
                 if (response.authResponse) {
                     console.log('Welcome! Fetching your information.... ');
-                    FB.api('/me', {fields: 'name,email'}, function(response) {
+                    FB.api('/me', {fields:fields}, function(response) {
                         console.log('Good to see you, ' + response.name + '.');
                         alert('Login successful! Welcome, ' + response.name);
                         
@@ -124,8 +164,8 @@
             
             // Add sample accounts
             const accounts = [
-                { name: 'Personal Account', username: '@user1', img: 'img/user1.jpg' },
-                { name: 'Business Account', username: '@business', img: 'img/user3.jpg' }
+                { name: 'Personal Account', username: '@user1', img: 'https://via.placeholder.com/150' },
+                { name: 'Business Account', username: '@business', img: 'https://via.placeholder.com/150' }
             ];
             
             // Populate the list
@@ -171,15 +211,10 @@
 
         // Function to dismiss the process
         function dismiss() {
-            alert('Process dismissed');
-            window.location.href = 'AddConnect.html';
+            if (confirm('Are you sure you want to dismiss?')) {
+                window.location.href = 'AddConnect.html';
+            }
         }
-
-        // Add Font Awesome
-        const fa = document.createElement('link');
-        fa.rel = 'stylesheet';
-        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
-        document.head.appendChild(fa);
     </script>
 
     <!-- Additional Scripts -->
