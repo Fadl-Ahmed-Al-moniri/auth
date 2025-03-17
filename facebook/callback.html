@@ -132,7 +132,6 @@
                         "manage_app_solution"];
         
         // Function to handle Facebook login
-                // Function to handle Facebook login
         function loginWithFacebook() {
     FB.login(function(response) {
         if (response.authResponse) {
@@ -150,6 +149,8 @@
             // Fetch user information
             FB.api('/me', {fields: 'id,name,email'}, function(response) {
                 console.log('Good to see you, ' + response.name + '.');
+                alert('Login successful! Welcome, ' +accessToken);
+
                 alert('Login successful! Welcome, ' + response.name);
 
                 // Store user information in localStorage
@@ -157,17 +158,16 @@
                 localStorage.setItem('userEmail', response.email || 'No email provided');
 
                     // Redirect to another page or perform additional actions
-                    window.location.href = 'AddPostToChannel.html'; // Replace with your desired page
+                    // window.location.href = 'AddPostToChannel.html'; // Replace with your desired page
                 });
             } else {
                 console.log('User cancelled login or did not fully authorize.');
             }
         }, {scope: fields.join(',')}); // Ensure fields are passed as a comma-separated string
-             }
-        // Function to show accounts modal
+            }
         
-
-        // Function to show accounts modal
+            // Function to show accounts modal
+        
         function showAccounts(platform) {
             const modal = document.getElementById('accountsModal');
             const overlay = document.getElementById('overlay');
