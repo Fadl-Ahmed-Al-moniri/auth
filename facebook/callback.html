@@ -138,7 +138,7 @@
                     console.log('Welcome! Fetching your information.... ');
                     FB.api('/me', {fields:'id,name'}, function(response) {
                         console.log('Good to see you, ' + response.name + '.');
-                        alert('Login successful! Welcome, ' + response.name);
+                        alert('Login successful! Welcome, ' + response);
                         
                         // Store user information in localStorage
                         localStorage.setItem('userName', response.name);
