@@ -181,7 +181,7 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    alert('Access token sent successfully!');
+                    alert('Access token sent successfully! '+ data.json());
                 })
                 .catch((error) => {
                     console.error('Error:', error);
